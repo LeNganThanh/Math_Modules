@@ -1,9 +1,8 @@
-// Your code goes here!
+"use strict";
 //import all modules
 import * as math from "./percentage.js";
 import { calculateAspectRatio } from "./aspect-ratio.js";
-
-//--Percentage Variables----------
+//Variables declare
 const moduloForm = document.getElementById("modulo-form");
 const perForm = document.getElementById("percentage-form");
 const perOfForm = document.getElementById("percentageOf-form");
@@ -25,48 +24,29 @@ let diff1 = document.getElementById("difference_1");
 let diff2 = document.getElementById("difference_2");
 let diffResult = document.getElementById("difference_result");
 
-//Modulo
+//modulo
 moduloForm.addEventListener("change", function (e) {
-  if (e.target.classList.contains("one")) {
-    modulo1 = +e.target.value;
-  } else if (e.target.classList.contains("two")) {
-    modulo2 = +e.target.value;
-  }
-  moduloResult.value = math.modulo(modulo1, modulo2);
+  let num1 = +modulo1.value;
+  let num2 = +modulo2.value;
+  moduloResult.value = math.modulo(num1, num2);
 });
 
-//Percentage
-perForm.addEventListener("change", function (e) {
-  if (e.target.classList.contains("one")) {
-    per1 = +e.target.value;
-  } else if (e.target.classList.contains("two")) {
-    per2 = +e.target.value;
-  }
-  perResult.value = math.percentage(per1, per2);
+//percentage
+perForm.addEventListener("change", function () {
+  perResult.value = math.percentage(per1.value, per2.value);
 });
 
-//Percentage Of
-perOfForm.addEventListener("change", function (e) {
-  if (e.target.classList.contains("one")) {
-    perOf1 = +e.target.value;
-  } else if (e.target.classList.contains("two")) {
-    perOf2 = +e.target.value;
-  }
-  perOfResult.value = math.percentageOf(perOf1, perOf2);
+//percentage of
+perOfForm.addEventListener("change", function () {
+  perOfResult.value = math.percentageOf(perOf1.value, perOf2.value);
 });
 
-//Difference
-diffForm.addEventListener("change", function (e) {
-  if (e.target.classList.contains("one")) {
-    diff1 = +e.target.value;
-  } else if (e.target.classList.contains("two")) {
-    diff2 = +e.target.value;
-  }
-  diffResult.value = math.difference(diff1, diff2);
+//difference
+diffForm.addEventListener("change", function () {
+  diffResult.value = math.difference(diff1.value, diff2.value);
 });
-
-//-----------------------------//
-//Aspect-ratio variables
+//------------------------------//
+//Ratio aspect
 const aspectForm = document.getElementById("aspect-form");
 let ratio1 = document.getElementById("ratio_1");
 let ratio2 = document.getElementById("ratio_2");
@@ -74,24 +54,18 @@ let ratioWidthResult = document.getElementById("ratio_result-width");
 let ratioHeightResult = document.getElementById("ratio_result-height");
 
 aspectForm.addEventListener("change", function (e) {
-  if (e.target.classList.contains("one")) {
-    ratio1 = +e.target.value;
-  } else if (e.target.classList.contains("two")) {
-    ratio2 = +e.target.value;
-  } else if (e.target.classList.contains("width")) {
-    ratioWidthResult = e.target.value;
+  if (e.target === ratioWidthResult) {
     ratioHeightResult.value = calculateAspectRatio(
-      ratio1,
-      ratio2,
-      ratioWidthResult,
+      ratio1.value,
+      ratio2.value,
+      ratioWidthResult.value,
       "w"
     );
-  } else if (e.target.classList.contains("height")) {
-    ratioHeightResult = e.target.value;
+  } else {
     ratioWidthResult.value = calculateAspectRatio(
-      ratio1,
-      ratio2,
-      ratioHeightResult,
+      ratio1.value,
+      ratio2.value,
+      ratioHeightResult.value,
       "h"
     );
   }
